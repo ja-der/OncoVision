@@ -1,4 +1,4 @@
-# OncoVision: Skin Cancer Classification Using Deep Learning
+# OncoVision: Skin Cancer Classification Using Machine Learning
 
 ## Project Overview:
 
