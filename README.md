@@ -1,5 +1,3 @@
-# OncoVision: Skin Cancer Classification Using Machine Learning
-
 ## Project Overview:
 
 OncoVision, combining "oncology" (cancer) and "vision" (image classification), was created to help individuals easily assess skin lesions from home. Inspired by the personal experiences of family and friends affected by skin cancer, this project aims to support early detection.
