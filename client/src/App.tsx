@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 
 function App() {
   const [file, setFile] = useState<File | null>(null);
@@ -17,7 +15,7 @@ function App() {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/predict", {
+      const response = await fetch("/api/predict", {
         method: "POST",
         body: formData,
       });

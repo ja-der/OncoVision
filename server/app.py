@@ -7,7 +7,8 @@ import os
 
 app = Flask(__name__)
 CORS(app)
-MODEL_PATH = "cancer_classifier.h5"
+MODEL_PATH = "/app/backend/cancer_classifier.h5"
+# MODEL_PATH = "cancer_classifier.h5"
 model = load_model(MODEL_PATH)
 
 # @app.route("/")

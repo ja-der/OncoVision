@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Background circle (skin tone) -->
+  <circle cx="32" cy="32" r="30" fill="#FFE0CC" stroke="#FFD1B8" stroke-width="2"></circle>
+
+  <!-- Magnifying glass rim -->
+  <circle cx="28" cy="28" r="14" stroke="#222" stroke-width="3" fill="#fff"></circle>
+
+  <!-- Eye inside lens -->
+  <ellipse cx="28" cy="28" rx="6.5" ry="4.5" fill="#111"></ellipse>
+  <circle cx="28" cy="28" r="2" fill="#fff"></circle>
+
+  <!-- Handle -->
+  <rect x="36" y="36" width="14" height="4" rx="2" transform="rotate(45 36 36)" fill="#444"></rect>
+
+  <!-- Small lesion dot (symbolic of detection target) -->
+  <circle cx="48" cy="20" r="3" fill="#B22234"></circle>
+
+  <!-- Optional text for larger sizes -->
+  <text x="32" y="59" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="6" font-weight="700" fill="#111">OV</text>
+</svg>
