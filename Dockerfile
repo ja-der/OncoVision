@@ -1,7 +1,7 @@
 FROM node:22-alpine AS build-frontend
 WORKDIR /app/client
 COPY client/package*.json ./
-RUN npm install
+RUN npm ci
 COPY client/ ./
 RUN npm run build
 
@@ -19,21 +19,28 @@ FROM python:3.11-slim
 # Copy backend and frontend
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y nginx && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends nginx supervisor && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN rm -f /etc/nginx/sites-enabled/default
 
 COPY --from=build-backend /app/backend ./backend
-COPY --from=build-frontend /app/client/dist ./frontend
+COPY --from=build-frontend /app/client/dist /var/www/html
 
-COPY --from=build-backend /usr/local/lib/python3.11 /usr/local/lib/python3.11
+# Copy only installed Python packages and console scripts from build stage
+COPY --from=build-backend /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
 COPY --from=build-backend /usr/local/bin /usr/local/bin
 
 # Copy nginx config
 COPY server/nginx.conf /etc/nginx/conf.d/default.conf
 
+# Copy supervisor config
+COPY server/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 # Expose ports
 EXPOSE 80 5000
 
-CMD ["sh", "-c", "nginx && python3 backend/app.py"]
+CMD ["/usr/bin/supervisord"]
 
 
 

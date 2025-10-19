@@ -15,7 +15,7 @@ function App() {
     formData.append("file", file);
 
     try {
-      const response = await fetch("/api/predict", {
+      const response = await fetch("/predict", {
         method: "POST",
         body: formData,
       });

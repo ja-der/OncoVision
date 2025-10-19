@@ -1,19 +1,25 @@
+# Node / frontend build artifacts
 node_modules
 client/node_modules
 client/.next
 client/build
 client/dist
 
+# Python / backend build artifacts
 server/__pycache__/
 server/uploads/
 server/skin_cancer_model.ipynb
 
-
+# Logs and OS files
 *.log
 .DS_Store
+
+# Git / IDE / environment
 .git
 .vscode
 .env
 venv
+
+# Project files not needed in image
 Dockerfile
 README.md
