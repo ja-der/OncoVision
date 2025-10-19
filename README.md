@@ -1,44 +1,98 @@
+# 🩺 OncoVision - Early Skin Cancer Detection with Deep Learning
+
+## Demo:
+
+OncoVision (from _oncology_ + _vision_) is a project I built to help people assess skin lesions safely from home using image classification.
+
+This idea came from seeing close friends and family affected by skin cancer, and realizing how critical early detection can be.
+
+My goal isn’t to replace a dermatologist, but to **empower individuals to identify potential risks early** and seek professional advice when needed.
+
+> Currently achieves **~91% accuracy** in classifying skin lesions as **benign or malignant**.
+
 ## Project Overview:
 
 OncoVision, combining "oncology" (cancer) and "vision" (image classification), was created to help individuals easily assess skin lesions from home. Inspired by the personal experiences of family and friends affected by skin cancer, this project aims to support early detection.
 
 The idea is for individuals to evaluate potential risks and seek professional advice, contributing to better outcomes through early diagnosis.
 
-#### Achieves ~91% accuracy in classifying skin lesions as benign or malignant.
+#### Achieves ~93% accuracy in classifying skin lesions as benign or malignant.
 
-## Technologies 🔧:
+## 🌐 Technologies Used
 
-- **TensorFlow/Keras** for building and training the CNN model.
-- **Python** libraries such as NumPy, and Seaborn for image handling
-- **Sklearn** for metrics including confusion matrix and train-test splits
-- **Matplotlib** for creating visualizations like training/validation accuracy and loss curves, as well as confusion matrices.
+- TensorFlow / Keras - for building and running the deep learning model (CNN)
+- Flask - Python framework for serving the backend server + API
+- React - for creating the user-friendly frontend interface
+- Docker - for containerizing the application (frontend, backend, and Nginx)
+- Nginx - for serving the frontend and reverse-proxying API requests to the backend.
 
-## Dataset 📊:
+## 📂 Dataset
 
-The dataset includes images of benign and malignant skin lesions, which are preprocessed to ensure uniformity.
+The dataset contains labelled images of both **benign** and **malignant** skin lesions.  
+Before training, all images were preprocessed (resized, normalized, and balanced)to ensure consistent input quality.
 
-**All images can be found here:**
-https://drive.google.com/drive/folders/17CKcffTFqglyzb-2vB_uN_Y0j00d5rIf?usp=drive_link
+**Dataset link:**  
+[Google Drive Folder](https://drive.google.com/drive/folders/17CKcffTFqglyzb-2vB_uN_Y0j00d5rIf?usp=drive_link)
 
-## Model Structure 🏗️:
+## Model Architecture:
 
-- Convolutional layers with ReLU activation for feature extraction.
-- MaxPooling layers for downsampling.
-- Fully connected layers for classification.
-- Dropout layer to prevent overfitting.
-- Sigmoid output layer for binary classification.
+- Convolutional layers with **ReLU** activation for feature extraction
+- **MaxPooling** for spatial downsampling
+- **Dropout** to prevent overfitting
+- Fully connected layers leading to a **sigmoid** output for binary classification
 
-## Future Work 🔮:
+The model was trained on GPU (TensorFlow) with a focus on interpretability and balanced generalization.
+
+## 🐳 Docker Containerization
+
+OncoVision is fully containerized, making it easy to **run locally or deploy anywhere** without worrying about environment setup.
+
+### Pre-Built Image
+
+A pre-built container image is available on **GitHub Container Registry (GHCR)** (Available also in packages tab in this repo):
+
+```bash
+docker pull ghcr.io/ja-der/oncovision:1.2.6
+```
+
+### Run the App
+
+Once pulled, simply run:
+
+```bash
+docker run -d -p 80:80 -p 5000:5000 ghcr.io/ja-der/oncovision:1.2.6
+```
+
+or whichever port mapping you prefer
+
+Then open your browser at http://localhost:80
+to access the application.
+
+### Build Locally
+
+Or if you prefer to build from source:
+
+```bash
+docker build -t oncovision:latest .
+docker run -d -p 80:80 -p 5000:5000 oncovision:latest
+```
+
+> Note: Tensorflow is a resource-intensive library, which contributes to the larger size of the container.
+
+## Future Work:
 
 - Furthur tweak the accuracy of the model
-- Implement a user-friendly UI that will allow users to upload their own images
-- Use a more extensive dataset
 - Differentiate between different types of skin cancer (melanoma, basal cell carcinoma, and squamous cell carcinoma)
 
-## Lessons Learned:
+## 💭 Lessons Learned
 
-This project builds upon my experiences during **uOttahack** (Canada's capital hackathon), where I initially tried to create a machine learning model for reading cursive handwriting. Although the model didn't perform well, I learned a lot about **TensorFlow**, **image preprocessing**, and the importance of data augmentation and CNNs. This project is a culmination of those lessons and has inspired me to continue working on machine learning models for healthcare challenges.
+Working on OncoVision deepened my understanding of how **machine learning and software engineering** come together to create meaningful, real-world tools.
 
-- **Image Preprocessing**: Learned to resize, normalize, and enhance images
-- **CNNs**: Gained experience with CNNs to extract important features
-- **Model Evaluation**: Learned to use metrics like accuracy and precision to check model performance
+Instead of focusing solely on building models, I explored how to **design, package, and deploy** AI systems that can be easily used by others, from preprocessing data and training models to containerizing them for deployment.
+
+Through this project, I learned to:
+
+- **Preprocess and standardize images** for reliable model input
+- **Build and refine CNNs** for robust, generalizable performance
+- **Integrate ML** into production-ready web applications using Python and Docker
+- **Evaluate and interpret models** through metrics like confusion matrices
