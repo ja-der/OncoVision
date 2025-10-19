@@ -2,6 +2,10 @@
 
 ## Demo:
 
+https://github.com/user-attachments/assets/2537cbbd-7497-47cb-9dcb-b92030a183bc
+
+> apologies, slow pc hence slow demo
+
 OncoVision (from _oncology_ + _vision_) is a project I built to help people assess skin lesions safely from home using image classification.
 
 This idea came from seeing close friends and family affected by skin cancer, and realizing how critical early detection can be.
