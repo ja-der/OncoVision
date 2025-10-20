@@ -18,7 +18,7 @@ The idea is for individuals to evaluate potential risks and seek professional ad
 
 #### Achieves ~93% accuracy in classifying skin lesions as benign or malignant.
 
-## 🌐 Technologies Used
+## Technologies Used
 
 - TensorFlow / Keras - for building and running the deep learning model (CNN)
 - Flask - Python framework for serving the backend server + API
@@ -26,7 +26,7 @@ The idea is for individuals to evaluate potential risks and seek professional ad
 - Docker - for containerizing the application (frontend, backend, and Nginx)
 - Nginx - for serving the frontend and reverse-proxying API requests to the backend.
 
-## 📂 Dataset
+## Dataset
 
 The dataset contains labelled images of both **benign** and **malignant** skin lesions.  
 Before training, all images were preprocessed (resized, normalized, and balanced)to ensure consistent input quality.
@@ -84,7 +84,7 @@ docker run -d -p 80:80 -p 5000:5000 oncovision:latest
 - Furthur tweak the accuracy of the model
 - Differentiate between different types of skin cancer (melanoma, basal cell carcinoma, and squamous cell carcinoma)
 
-## 💭 Lessons Learned
+## Lessons Learned
 
 Working on OncoVision deepened my understanding of how **machine learning and software engineering** come together to create meaningful, real-world tools.
 
