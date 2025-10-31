@@ -12,15 +12,13 @@ This idea came from seeing close friends and family affected by skin cancer, and
 
 My goal isn’t to replace a dermatologist, but to **empower individuals to identify potential risks early** and seek professional advice when needed.
 
-> Currently achieves **~91% accuracy** in classifying skin lesions as **benign or malignant**.
-
 ## Project Overview:
 
 OncoVision, combining "oncology" (cancer) and "vision" (image classification), was created to help individuals easily assess skin lesions from home. Inspired by the personal experiences of family and friends affected by skin cancer, this project aims to support early detection.
 
 The idea is for individuals to evaluate potential risks and seek professional advice, contributing to better outcomes through early diagnosis.
 
-#### Achieves ~93% accuracy in classifying skin lesions as benign or malignant.
+> Currently achieves **~31% accuracy** in classifying skin lesions as **benign or malignant**.
 
 ## Technologies Used
 
