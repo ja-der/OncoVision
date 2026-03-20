@@ -18,7 +18,7 @@ OncoVision, combining "oncology" (cancer) and "vision" (image classification), w
 
 The idea is for individuals to evaluate potential risks and seek professional advice, contributing to better outcomes through early diagnosis.
 
-> Currently achieves **~31% accuracy** in classifying skin lesions as **benign or malignant**.
+> Currently achieves **~93% accuracy** in classifying skin lesions as **benign or malignant**.
 
 ## Technologies Used
 
