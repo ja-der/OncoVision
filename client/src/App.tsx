@@ -92,7 +92,7 @@ export default function App() {
     }
   };
 
-  const confidencePercentage = data ? Math.round(data.confidence * 100) : 0;
+  const confidencePercentage = data ? (data.confidence * 100).toFixed(1) : "0";
   const isMalignant = data?.prediction === "Malignant";
 
   return (
@@ -523,21 +523,37 @@ export default function App() {
                                 : 'linear-gradient(90deg, #66bb6a 0%, #81c784 100%)'
                             }}
                           />
-                          {/* Threshold Line at 70% */}
                           <div className="absolute top-0 left-[70%] h-full w-0.5 bg-yellow-600/50" />
                         </div>
 
-                        <p style={{
-                          fontSize: '13px',
-                          color: '#64758b',
-                          marginTop: '16px',
-                          fontWeight: 500,
-                          lineHeight: '1.6'
+                        {/* Clinical Insight Card */}
+                        <div style={{
+                          padding: '16px',
+                          backgroundColor: isMalignant ? '#ffebee' : '#e8f5e9',
+                          borderLeft: `4px solid ${isMalignant ? '#ef5350' : '#66bb6a'}`,
+                          marginTop: '20px'
                         }}>
-                          {confidencePercentage >= 70
-                            ? '→ High confidence result. Consult a dermatologist for professional evaluation.'
-                            : '→ Low confidence detected. Clinical review strongly recommended.'}
-                        </p>
+                          <div className="flex items-center gap-2 mb-2" style={{ 
+                            color: isMalignant ? '#c62828' : '#2e7d32',
+                            fontWeight: 700,
+                            fontSize: '11px',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.05em'
+                          }}>
+                            {isMalignant ? <AlertCircle size={16} /> : <CheckCircle size={16} />}
+                            <span>{isMalignant ? 'High-Risk Alert' : 'Likely Benign'}</span>
+                          </div>
+                          <p style={{
+                            fontSize: '13px',
+                            color: isMalignant ? '#b71c1c' : '#1b5e20',
+                            lineHeight: '1.5',
+                            fontWeight: 500
+                          }}>
+                            {isMalignant 
+                                ? "Features highly characteristic of malignancy were detected. Urgent evaluation by a specialist is required for a definitive diagnosis."
+                                : "Analysis suggests the lesion is likely benign. However, monitor for changes (size, color, symmetry) and consult a professional if you notice anything unusual."}
+                          </p>
+                        </div>
                       </div>
                     </div>
 
@@ -595,40 +611,13 @@ export default function App() {
 
                     {/* Metadata */}
                     <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: '1fr 1fr',
-                      gap: '1px',
-                      backgroundColor: '#e1e8ed',
-                      border: '1px solid #e1e8ed'
+                      backgroundColor: '#ffffff',
+                      border: '1px solid #e1e8ed',
+                      padding: '20px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center'
                     }}>
-                      <div style={{
-                        padding: '20px',
-                        backgroundColor: '#ffffff'
-                      }}>
-                        <p style={{
-                          fontSize: '10px',
-                          color: '#8696a6',
-                          marginBottom: '8px',
-                          fontWeight: 700,
-                          letterSpacing: '0.08em',
-                          textTransform: 'uppercase'
-                        }}>
-                          Pipeline Version
-                        </p>
-                        <p style={{
-                          fontSize: '16px',
-                          fontWeight: 700,
-                          color: '#1a2b3c',
-                          fontFamily: 'Plus Jakarta Sans, sans-serif'
-                        }}>
-                          v{data.model_version}
-                        </p>
-                      </div>
-                      <div style={{
-                        padding: '20px',
-                        backgroundColor: '#ffffff',
-                        textAlign: 'right'
-                      }}>
                         <p style={{
                           fontSize: '10px',
                           color: '#8696a6',
@@ -647,7 +636,6 @@ export default function App() {
                         }}>
                           {data.inference_time_ms}ms
                         </p>
-                      </div>
                     </div>
                   </div>
                 )}
