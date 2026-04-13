@@ -86,7 +86,7 @@ def predict():
     file.save(filepath)
 
     image = load_img(filepath, target_size=(150, 150))
-    img_array = img_to_array(image) / 255.0  # Normalize pixels to [0, 1]
+    img_array = img_to_array(image)
     img_array_expanded = np.expand_dims(img_array, axis=0)
 
     # Perform prediction
@@ -104,7 +104,6 @@ def predict():
     
     inference_time = (time.perf_counter() - start_time) * 1000
     
-    # Calculate confidence relative to the predicted class
     is_malignant = confidence >= 0.5
     display_confidence = confidence if is_malignant else (1.0 - confidence)
     
