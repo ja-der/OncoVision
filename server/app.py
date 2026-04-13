@@ -15,13 +15,23 @@ CORS(app)
 MODEL_PATH = "cancer_classifier.h5"
 if not os.path.exists(MODEL_PATH):
     MODEL_PATH = "server/cancer_classifier.h5"
-if not os.path.exists(MODEL_PATH):
-    MODEL_PATH = "/app/backend/cancer_classifier.h5"
 
 model = load_model(MODEL_PATH)
 MODEL_VERSION = "1.0.0"
 
+def find_last_conv_layer(m):
+    for layer in reversed(m.layers):
+        if "conv2d" in layer.name.lower():
+            return layer.name
+    return None
+
+LAST_CONV_LAYER = find_last_conv_layer(model)
+print(f"Detected last conv layer: {LAST_CONV_LAYER}")
+
 def make_gradcam_heatmap(img_array, model, last_conv_layer_name):
+    if not last_conv_layer_name:
+        raise ValueError("No conv2d layer found in model.")
+        
     grad_model = Model(
         model.inputs, [model.get_layer(last_conv_layer_name).output, model.output]
     )
@@ -84,7 +94,7 @@ def predict():
     confidence = float(prediction_raw[0][0])
     
     try:
-        heatmap = make_gradcam_heatmap(img_array_expanded, model, "conv2d_2")
+        heatmap = make_gradcam_heatmap(img_array_expanded, model, LAST_CONV_LAYER)
         heatmap_base64 = get_superimposed_heatmap(filepath, heatmap)
     except Exception as e:
         print(f"Grad-CAM error: {e}")

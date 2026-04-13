@@ -137,12 +137,16 @@ export default function App() {
         <div className="h-full grid grid-cols-2">
           {/* Left Panel - Upload */}
           <div className="h-full flex flex-col" style={{
-            backgroundColor: '#ffffff',
-            borderRight: '1px solid #e1e8ed'
+            backgroundColor: '#ffffff'
           }}>
             <div style={{
               padding: '32px 48px',
-              borderBottom: '1px solid #e1e8ed'
+              borderBottom: '1px solid #e1e8ed',
+              height: '180px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              backgroundColor: '#ffffff'
             }}>
               <div style={{
                 display: 'inline-block',
@@ -206,7 +210,7 @@ export default function App() {
                       />
                       <div className="absolute top-0 right-0 px-3 py-2" style={{
                         backgroundColor: '#e8f5e9',
-                        borderBottomLeft: '1px solid #c8e6c9'
+                        // borderBottomLeft: '1px solid #c8e6c9'
                       }}>
                         <CheckCircle size={18} style={{ color: '#4caf50' }} strokeWidth={2.5} />
                       </div>
@@ -308,12 +312,17 @@ export default function App() {
 
           {/* Right Panel - Results */}
           <div className="h-full flex flex-col" style={{
-            backgroundColor: '#f8fafb'
+            backgroundColor: '#ffffff',
+            borderLeft: '1px solid #e1e8ed'
           }}>
             <div style={{
               padding: '32px 48px',
               borderBottom: '1px solid #e1e8ed',
-              backgroundColor: '#ffffff'
+              backgroundColor: '#ffffff',
+              height: '180px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
             }}>
               <div style={{
                 display: 'inline-block',
@@ -354,7 +363,8 @@ export default function App() {
               alignItems: 'center',
               justifyContent: 'center',
               padding: '48px',
-              overflowY: 'auto'
+              overflowY: 'auto',
+              backgroundColor: '#f5f7f9'
             }}>
               <div className="w-full max-w-lg">
                 {!data && !isAnalyzing && (
@@ -647,11 +657,12 @@ export default function App() {
         </div>
       </main>
 
-      {/* Footer Disclaimer */}
       <footer style={{
         borderTop: '1px solid #e1e8ed',
         backgroundColor: '#ffffff',
-        padding: '20px 48px'
+        padding: '24px 48px',
+        position: 'relative',
+        zIndex: 10
       }}>
         <div className="flex items-start gap-3">
           <div style={{
