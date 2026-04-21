@@ -5,7 +5,7 @@ OncoVision (from _oncology_ + _vision_) is a project I built to help people chec
 The goal isn't to replace a real doctor, but to help people catch potential issues early so they know when it's time to seek professional medical advice.
 
 ## Demo
-https://github.com/user-attachments/assets/2537cbbd-7497-47cb-9dcb-b92030a183bc
+https://github.com/user-attachments/assets/3be5d8af-1919-4008-97a1-6f91b8da62c1
 
 ## Features
 - **Classification:** Categorizes skin lesion images using a deep learning model.
